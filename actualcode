@@ -259,21 +259,17 @@ while wait() do
         end
         end
     if autod == true then
-        print("test")
     local d = plr.Backpack:GetChildren()
     for i=1, #d do
         if (d[i]:FindFirstChild("OOF")) then
             tool = d[i]
-            print("hi")
         end
     end
-    print("test2")
     local s = plr.Character:GetChildren()
     for f=1, #s do
         if (s[f].ClassName == "Tool") then
             if (s[f]:FindFirstChild("OOF")) then
                 tool = s[f]
-                print("hi")
                 end
         end
     end
