@@ -10,6 +10,7 @@ local safed = false
 local warn = false
 local sit = false
 local blur = false
+local laptop = false
 --FLOOR 3
 local rand = false
 local autoc = false
@@ -24,6 +25,11 @@ local plr = game.Players.LocalPlayer
 local gen = win:Server("All Floors", "")
 
 local main = gen:Channel("General")
+
+main:Toggle("Auto Laptop",false, function(bool)
+print(bool)
+laptop = bool
+end)
 
 main:Toggle("Anti Blur",false, function(bool)
 print(bool)
@@ -89,7 +95,6 @@ end)
 clean:Button("Get Broom ($20)", function()
 fireclickdetector(workspace.BROOM.ClickDetector)
 end)
-
 
 local setting = serv:Channel("Settings")
 
@@ -204,7 +209,12 @@ game:GetService("ReplicatedStorage").TimeRewardEvent:FireServer(unpack(args))
     end
 end
 while wait() do
-    if convert == true then
+if laptop == true then
+if plr.Backpack:FindFirstChild("Laptop") then
+plr.Backpack.Laptop.Parent = plr.Character
+end
+end
+if convert == true then
         game:GetService("ReplicatedStorage").ExchangeEvent:FireServer()
         end
     if autoc == true then
