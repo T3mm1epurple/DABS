@@ -66,6 +66,18 @@ DiscordLib:Notification("Notification", "Got card", "Okay")
 end
 end)
 
+bing:Button("Throw away bingo card", function()
+if plr.Backpack:FindFirstChild("BingoCard") or plr.Character:FindFirstChild("BingoCard") then
+    local args = {
+    [1] = 2
+}
+
+game:GetService("ReplicatedStorage").CardEvent:FireServer(unpack(args))
+    else
+DiscordLib:Notification("Notification", "you dont have a card, "Okay")
+end
+end)
+
 local consume = serv:Channel("Consumes")
 
 consume:Toggle("Auto Drink",false, function(bool)
