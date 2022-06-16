@@ -26,6 +26,16 @@ local gen = win:Server("All Floors", "")
 
 local main = gen:Channel("General")
 
+local drop = main:Dropdown("Teleport to Floor",{"1","2","3","4","5"}, function(bool)
+print(bool)
+local args = {
+    [1] = bool
+}
+
+game:GetService("ReplicatedStorage").TeleportEvent:FireServer(unpack(args))
+
+end)
+
 main:Toggle("Auto Laptop",false, function(bool)
 print(bool)
 laptop = bool
