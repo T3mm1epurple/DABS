@@ -277,7 +277,7 @@ while wait() do
                 end
         end
     end
-    print("WHY")
+    if tool ~= nil then
     if tool:IsDescendantOf(game) then
         local args = {
     [1] = 1
@@ -290,6 +290,7 @@ if safed == false then
 wait(.1)
 else
     wait(1)
+end
 end
 end
         		end
