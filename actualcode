@@ -29,6 +29,11 @@ local main = gen:Channel("General")
 main:Toggle("Auto Laptop",false, function(bool)
 print(bool)
 laptop = bool
+    if warn == false then
+    if bool == true then
+    DiscordLib:Notification("WARNING", "you wont auto equip bingo card if you also have that enabled", "ok")
+    end
+    end
 end)
 
 main:Toggle("Anti Blur",false, function(bool)
