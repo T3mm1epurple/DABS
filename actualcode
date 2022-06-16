@@ -1,0 +1,321 @@
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
+
+local win = DiscordLib:Window("da amazing bunker simulator")
+
+--FLOOR 1/2
+local autob = false
+local autom = false
+local autod = false
+local safed = false
+local warn = false
+local sit = false
+local blur = false
+--FLOOR 3
+local rand = false
+local autoc = false
+local cardnumber = 10
+--FLOOR 4
+
+--FLOOR 5
+convert = false
+
+local plr = game.Players.LocalPlayer
+
+local gen = win:Server("General", "")
+
+local main = gen:Channel("All Floors")
+
+main:Toggle("Anti Blur",false, function(bool)
+print(bool)
+blur = bool
+end)
+main:Toggle("Disable Warnings",false, function(bool)
+print(bool)
+warn = bool
+end)
+if game.PlaceId == 4050215579 then
+local serv = win:Server("1/2", "")
+print("HIHIHIIHHIH")
+local bing = serv:Channel("Bingo")
+
+bing:Toggle("Auto-Bingo",false, function(bool)
+print(bool)
+autob = bool
+end)
+
+bing:Button("Get bingo card", function()
+if plr.Backpack:FindFirstChild("BingoCard") or plr.Character:FindFirstChild("BingoCard") then
+    DiscordLib:Notification("Notification", "You already have a card", "damn")
+    else
+DiscordLib:Notification("Notification", "Got card", "Okay")
+    game:GetService("ReplicatedStorage").CardEvent:FireServer(1)
+end
+end)
+
+local consume = serv:Channel("Consumes")
+
+consume:Toggle("Auto Drink",false, function(bool)
+print(bool)
+autod = bool
+if warn == false then
+if bool == true and safed == false then
+    DiscordLib:Notification("WARNING", "safe mode is recommended", "ok")
+end
+end
+end)
+
+consume:Button("Get Water (will remove broom/mop)", function()
+fireclickdetector(workspace["Diet Water"].ClickDetector)
+end)
+
+consume:Button("Go to 7/11", function()
+plr.Character.HumanoidRootPart.CFrame = CFrame.new(workspace["Diet Water"].Position + Vector3.new(5, 0, 5))
+end)
+
+local clean = serv:Channel("Cleaning")
+
+clean:Toggle("Auto Clean",false, function(bool)
+print(bool)
+autom = bool
+end)
+
+clean:Seperator()
+
+clean:Button("Get Mop (gamepass)", function()
+fireclickdetector(workspace.Mop.ClickDetector)
+end)
+
+clean:Button("Get Broom ($20)", function()
+fireclickdetector(workspace.BROOM.ClickDetector)
+end)
+
+
+local setting = serv:Channel("Settings")
+
+setting:Label("safe mode prevents player from catching you exploiting")
+
+setting:Toggle("Safe Mode",false, function(bool)
+print(bool)
+safed = bool
+if bool == true then
+ DiscordLib:Notification("Info", "works on drinks", "ok")
+ end
+end)
+
+setting:Toggle("Jump When Sit (USEFUL FOR CLEANING)",false, function(bool)
+print(bool)
+sit = bool
+end)
+
+local tool = nil
+local vomit = nil
+local char = plr.Character
+
+else
+if game.PlaceId == 4472538305 then
+    local thr = win:Server("3", "")
+    local card = thr:Channel("Lucky Combination")
+    
+    card:Toggle("Auto Combination",false, function(bool)
+    print(bool)
+    autoc = bool
+    if warn == false then
+    if bool == true then
+    DiscordLib:Notification("WARNING", "if you dont get the card immediately just wait (game makes this happen)", "ok")
+    end
+    end
+    end)
+    
+    local sldr = card:Slider("Card Number", 10, 99, 10, function(t)
+    print(t)
+    cardnumber = t
+    end)
+    
+    card:Toggle("Random Number",false, function(bool)
+    print(bool)
+    rand = bool
+    end)
+    
+    card:Button("Throw Away Card", function()
+if plr.Backpack:FindFirstChild("Card") or plr.Character:FindFirstChild("Card") then
+        game:GetService("ReplicatedStorage").ThrowEvent:FireServer()
+    else
+    DiscordLib:Notification("Notification", "you dont have a card", "ok")
+end
+end)
+    else
+       if game.PlaceId == 4684427971 then
+            local serv = win:Server("4", "")
+    local clinic = serv:Channel("Clinic")
+        clinic:Button("Heal at Clinic", function()
+        local args = {
+    [1] = 1
+}
+
+game:GetService("ReplicatedStorage").DoctorEvent:FireServer(unpack(args))
+wait(1)
+fireclickdetector(workspace["intern kun man"].ClickDetector)
+wait(5)
+fireclickdetector(workspace["other doc man"].ClickDetector)
+fireclickdetector(workspace["head doc man"].ClickDetector)
+end)
+else
+    if game.PlaceId == 5248557397 then
+        local realmach
+                    local serv = win:Server("5", "")
+    local lot = serv:Channel("Lottery")
+        lot:Button("Use all tokens on machine", function()
+         if plr.attributes.Token.Value > 0 then
+        local d = workspace:GetChildren()
+        for i=1, #d do
+            if (d[i].Name == "Machine") then
+                local mach = d[i]
+                print("omgmach")
+                if mach.Owner.Value == nil then
+                    realmach = mach
+                    if plr.attributes.Token.Value > 0 then
+                    repeat
+                    fireclickdetector(realmach.ClickDetector)
+                    wait(5)
+                    until plr.attributes.Token.Value == 0
+                    break
+                    end
+                    end
+            end
+        end
+        else
+             DiscordLib:Notification("Notification", "You have no tokens", "ok")
+            end
+        end)
+            lot:Button("Collect Daily Tokens", function()
+        local args = {
+    [1] = "DAILY_REWARD"
+}
+
+game:GetService("ReplicatedStorage").TimeRewardEvent:FireServer(unpack(args))
+    end)
+            lot:Toggle("Auto Convert",false, function(bool)
+    print(bool)
+    convert = bool
+    end)
+        end
+           end
+    end
+end
+while wait() do
+    if convert == true then
+        game:GetService("ReplicatedStorage").ExchangeEvent:FireServer()
+        end
+    if autoc == true then
+            if not plr.Backpack:FindFirstChild("Card") and not plr.Character:FindFirstChild("Card") then
+    if rand == false then
+    local args = {
+    [1] = 768,
+    [2] = cardnumber
+    }
+
+    game:GetService("ReplicatedStorage").BoomEvent:FireServer(unpack(args))
+    else
+        local args = {
+    [1] = 768,
+    [2] = math.random(10, 99)
+    }
+
+    game:GetService("ReplicatedStorage").BoomEvent:FireServer(unpack(args))
+    end
+
+    end
+    if game.Players.LocalPlayer.Backpack:FindFirstChild("Card") then
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("Card"))
+    end
+        end
+    if blur == true then
+        game.Lighting.Blur.Enabled = false
+        else
+            game.Lighting.Blur.Enabled = true
+        end
+    if sit == true then
+        local char = plr.Character
+        if char.Humanoid.Sit == true then
+            char.Humanoid.Jump = true
+            end
+        end
+    if autom == true then
+        local char = plr.Character
+        local d = workspace:GetChildren()
+        for i=1, #d do
+            if (d[i].Name == "VomitPart") then
+                if autom == true then
+                vomit = d[i]
+                char.HumanoidRootPart.CFrame = CFrame.new(vomit.Position + Vector3.new(0, 5, 0))
+                wait(1)
+                if vomit:IsDescendantOf(game) then
+                fireproximityprompt(vomit.ProximityPrompt)
+                wait(3)
+                end
+                end
+                end
+        end
+        end
+    if autod == true then
+        print("test")
+    local d = plr.Backpack:GetChildren()
+    for i=1, #d do
+        if (d[i]:FindFirstChild("OOF")) then
+            tool = d[i]
+            print("hi")
+        end
+    end
+    print("test2")
+    local s = plr.Character:GetChildren()
+    for f=1, #s do
+        if (s[f].ClassName == "Tool") then
+            if (s[f]:FindFirstChild("OOF")) then
+                tool = s[f]
+                print("hi")
+                end
+        end
+    end
+    print("WHY")
+    if tool:IsDescendantOf(game) then
+        local args = {
+    [1] = 1
+}
+
+tool.OOF:FireServer(unpack(args))
+tool.Coward:FireServer()
+tool.Parent = plr.Character
+if safed == false then
+wait(.1)
+else
+    wait(1)
+end
+end
+        		end
+    if autob == true then
+    if not plr.Backpack:FindFirstChild("BingoCard") and not plr.Character:FindFirstChild("BingoCard") then
+    game:GetService("ReplicatedStorage").CardEvent:FireServer(1)
+    end
+    if game.Players.LocalPlayer.Backpack:FindFirstChild("BingoCard") then
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("BingoCard"))
+    end
+local args = {
+    [1] = 2
+}
+
+game:GetService("ReplicatedStorage").BingoEvent:FireServer(unpack(args))
+
+local args = {
+    [1] = 1
+}
+
+game:GetService("ReplicatedStorage").BingoEvent:FireServer(unpack(args))
+    if not game.Players.LocalPlayer.Character:FindFirstChild("BingoCard") then
+        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Sheet") then
+            game:GetService("Players").LocalPlayer.PlayerGui.Sheet.Parent = nil
+            game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+            wait(1)
+        end
+    end
+end
+end
