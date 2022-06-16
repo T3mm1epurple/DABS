@@ -26,7 +26,9 @@ local gen = win:Server("All Floors", "")
 
 local main = gen:Channel("General")
 
-local drop = main:Dropdown("Teleport to Floor",{"1","2","3","4","5"}, function(bool)
+main:Label("you wont get teleported if your already on that floor")
+
+local drop = main:Dropdown("Teleport to Floor",{1,2,3,4,5}, function(bool)
 print(bool)
 local args = {
     [1] = bool
@@ -35,6 +37,8 @@ local args = {
 game:GetService("ReplicatedStorage").TeleportEvent:FireServer(unpack(args))
 
 end)
+
+main:Seperator()
 
 main:Toggle("Auto Laptop",false, function(bool)
 print(bool)
