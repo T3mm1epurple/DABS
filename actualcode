@@ -331,7 +331,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").BingoEvent:FireServer(unpack(args))
-    if not game.Players.LocalPlayer.Character:FindFirstChild("BingoCard") then
+    if not game.Players.LocalPlayer.Character:FindFirstChild("BingoCard") or not game.Players.LocalPlayer.Backpack:FindFirstChild("BingoCard") then
         if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Sheet") then
             game:GetService("Players").LocalPlayer.PlayerGui.Sheet.Parent = nil
             game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
