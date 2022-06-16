@@ -43,8 +43,11 @@ end)
 local d = workspace:GetDescendants()
 for i=1, #d do
 if (d[i]:FindFirstChild("Price")) then
-local item = d[i]
+    local ex = string.lower(tostring(d[i].Price.TextLabel.Text))
+    if ex == "$" or ex:find("$") then
+        local item = d[i]
 drop:Add(d[i].Name)
+    end
 end
 end
 
