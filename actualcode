@@ -31,7 +31,9 @@ print(bool)
 laptop = bool
     if warn == false then
     if bool == true then
+    if game.PlaceId == 4050215579 then
     DiscordLib:Notification("WARNING", "you wont auto equip bingo card if you also have that enabled", "ok")
+    end
     end
     end
 end)
