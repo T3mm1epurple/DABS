@@ -147,7 +147,7 @@ end)
        if game.PlaceId == 4684427971 then
             local serv = win:Server("4", "")
     local clinic = serv:Channel("Clinic")
-        clinic:Button("Heal at Clinic", function()
+        clinic:Button("Fast Clinic Heal", function()
         local args = {
     [1] = 1
 }
@@ -194,7 +194,7 @@ else
 
 game:GetService("ReplicatedStorage").TimeRewardEvent:FireServer(unpack(args))
     end)
-            lot:Toggle("Auto Convert",false, function(bool)
+            lot:Toggle("Auto Convert Tokens",false, function(bool)
     print(bool)
     convert = bool
     end)
