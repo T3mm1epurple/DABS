@@ -67,6 +67,7 @@ end
 end)
 
 bing:Button("Throw away bingo card", function()
+if autob == false then
 if plr.Backpack:FindFirstChild("BingoCard") or plr.Character:FindFirstChild("BingoCard") then
     local args = {
     [1] = 2
@@ -75,6 +76,9 @@ if plr.Backpack:FindFirstChild("BingoCard") or plr.Character:FindFirstChild("Bin
 game:GetService("ReplicatedStorage").CardEvent:FireServer(unpack(args))
     else
 DiscordLib:Notification("Notification", "you dont have a card", "Okay")
+end
+else
+DiscordLib:Notification("Notification", "you cant have auto bingo on while doing this", "Okay")
 end
 end)
 
@@ -327,13 +331,17 @@ end
     if not plr.Backpack:FindFirstChild("BingoCard") and not plr.Character:FindFirstChild("BingoCard") then
     game:GetService("ReplicatedStorage").CardEvent:FireServer(1)
     game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("BingoCard"))
-    game.Players.LocalPlayer.Character.Humanoid:UnEquipTools()
+      if plr.Character:FindFirstChild("BingoCard") then
+        plr.Character.BingoCard.Parent = plr.Backpack
+        end
     end
     if game.Players.LocalPlayer.Backpack:FindFirstChild("BingoCard") then
     if laptop == false then
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("BingoCard"))
         else
-         game.Players.LocalPlayer.Character.Humanoid:UnEquipTools()
+        if plr.Character:FindFirstChild("BingoCard") then
+        plr.Character.BingoCard.Parent = plr.Backpack
+        end
         end
     end
 local args = {
