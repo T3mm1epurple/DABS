@@ -113,7 +113,7 @@ print(bool)
 sit = bool
 end)
 
-clean:Button("TP to hidden spot", function()
+setting:Button("TP to hidden spot", function()
 plr.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.RoofP.Position + Vector3.new(0, 5, 0))
 end)
 
