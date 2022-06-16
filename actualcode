@@ -44,7 +44,7 @@ local d = workspace:GetDescendants()
 for i=1, #d do
 if (d[i]:FindFirstChild("Price")) then
 local item = d[i]
-drop:Add(d[i].Price.TextLabel.Text.." - "..d[i].Name)
+drop:Add(d[i].Name)
 end
 end
 
