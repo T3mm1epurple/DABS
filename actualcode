@@ -40,7 +40,6 @@ local drop = shop:Dropdown("Item",{}, function(bool)
 print(bool)
 end)
 
-drops:Button("Add option", function()
 local d = workspace:GetDescendants()
 for i=1, #d do
 if (d[i]:FindFirstChild("Price")) then
@@ -48,7 +47,6 @@ local item = d[i]
 drop:Add(d[i].Price.TextLabel.Text.." - "..d[i].Name)
 end
 end
-end)
 
 if game.PlaceId == 4050215579 then
 local serv = win:Server("1/2", "")
