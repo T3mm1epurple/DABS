@@ -118,9 +118,16 @@ end)
 
 local clean = serv:Channel("Cleaning")
 
+clean:Label("SAFE MODE IS SLOWER")
+
 clean:Toggle("Auto Clean",false, function(bool)
 print(bool)
 autom = bool
+if warn == false then
+if bool == true and safed == true then
+    --DiscordLib:Notification("WARNING", "it might break cause its in beta", "ok")
+    end
+    end
 end)
 
 clean:Seperator()
@@ -135,13 +142,13 @@ end)
 
 local setting = serv:Channel("Settings")
 
-setting:Label("safe mode prevents player from catching you exploiting")
+setting:Label("safe mode prevents players from catching you exploiting")
 
 setting:Toggle("Safe Mode",false, function(bool)
 print(bool)
 safed = bool
 if bool == true then
- DiscordLib:Notification("Info", "works on drinks", "ok")
+ DiscordLib:Notification("Info", "works on drinks and cleaning (cleaning in beta)", "ok")
  end
 end)
 
@@ -299,11 +306,32 @@ if convert == true then
             if (d[i].Name == "VomitPart") then
                 if autom == true then
                 vomit = d[i]
+                if safed == false then
                 char.HumanoidRootPart.CFrame = CFrame.new(vomit.Position + Vector3.new(0, 5, 0))
                 wait(1)
                 if vomit:IsDescendantOf(game) then
                 fireproximityprompt(vomit.ProximityPrompt)
                 wait(3)
+                end
+                               else
+local PathService = game:GetService("PathfindingService")
+	local hum = plr.Character:FindFirstChildOfClass("Humanoid")
+	local path = PathService:CreatePath()
+	local TrueCoords = vomit.Position
+	path:ComputeAsync(plr.Character.HumanoidRootPart.Position, TrueCoords)
+						local waypoints = path:GetWaypoints()
+						for i=1, #waypoints do
+						    local waypoint = waypoints[i]
+						  print("test")
+							local waypointPosition = waypoint.Position
+						    print(waypointPosition)
+						    	hum:MoveTo(waypointPosition)
+						    	hum.MoveToFinished:Wait()
+						end
+						if vomit:IsDescendantOf(game) then
+						fireproximityprompt(vomit.ProximityPrompt)
+						wait(3)
+						end
                 end
                 end
                 end
