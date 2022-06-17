@@ -130,6 +130,11 @@ if bool == true and safed == true then
     end
 end)
 
+clean:Toggle("Jump When Sit",false, function(bool)
+print(bool)
+sit = bool
+end)
+
 clean:Seperator()
 
 clean:Button("Get Mop (gamepass)", function()
@@ -150,11 +155,6 @@ safed = bool
 if bool == true then
  DiscordLib:Notification("Info", "works on drinks and cleaning (cleaning in beta)", "ok")
  end
-end)
-
-setting:Toggle("Jump When Sit (USEFUL FOR CLEANING)",false, function(bool)
-print(bool)
-sit = bool
 end)
 
 setting:Button("TP to hidden spot", function()
@@ -293,12 +293,6 @@ if convert == true then
         else
             game.Lighting.Blur.Enabled = true
         end
-    if sit == true then
-        local char = plr.Character
-        if char.Humanoid.Sit == true then
-            char.Humanoid.Jump = true
-            end
-        end
     if autom == true then
         local char = plr.Character
         local d = workspace:GetChildren()
@@ -309,6 +303,12 @@ if convert == true then
                 if safed == false then
                 char.HumanoidRootPart.CFrame = CFrame.new(vomit.Position + Vector3.new(0, 5, 0))
                 wait(1)
+		    if sit == true then
+        	local char = plr.Character
+        	if char.Humanoid.Sit == true then
+            	char.Humanoid.Jump = true
+           	 end
+        	end
                 if vomit:IsDescendantOf(game) then
                 fireproximityprompt(vomit.ProximityPrompt)
                 wait(3)
@@ -327,6 +327,12 @@ local PathService = game:GetService("PathfindingService")
 						    print(waypointPosition)
 						    	hum:MoveTo(waypointPosition)
 						    	hum.MoveToFinished:Wait()
+    							if sit == true then
+        						local char = plr.Character
+        						if char.Humanoid.Sit == true then
+            						char.Humanoid.Jump = true
+           						end
+        						end
 						end
 						if vomit:IsDescendantOf(game) then
 						fireproximityprompt(vomit.ProximityPrompt)
