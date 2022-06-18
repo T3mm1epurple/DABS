@@ -185,7 +185,7 @@ if game.PlaceId == 4472538305 then
     end
     end)
     
-    local sldr = card:Slider("Card Number", 10, 99, 10, function(t)
+    local sldr = card:Slider("Card Number", 0, 99, 10, function(t)
     print(t)
     cardnumber = t
     end)
