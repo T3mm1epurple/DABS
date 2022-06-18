@@ -133,6 +133,11 @@ end)
 clean:Toggle("Jump When Sit",false, function(bool)
 print(bool)
 sit = bool
+if warn == false then
+if bool == true then
+    DiscordLib:Notification("WARNING", "will repeat jump if in safe mode", "ok")
+    end
+    end
 end)
 
 clean:Seperator()
@@ -321,18 +326,15 @@ local PathService = game:GetService("PathfindingService")
 	path:ComputeAsync(plr.Character.HumanoidRootPart.Position, TrueCoords)
 						local waypoints = path:GetWaypoints()
 						for i=1, #waypoints do
+						    if sit == true then
+            						plr.Character.Humanoid.Jump = true
+            						end
 						    local waypoint = waypoints[i]
 						  print("test")
 							local waypointPosition = waypoint.Position
 						    print(waypointPosition)
 						    	hum:MoveTo(waypointPosition)
 						    	hum.MoveToFinished:Wait()
-    							if sit == true then
-        						local char = plr.Character
-        						if char.Humanoid.Sit == true then
-            						char.Humanoid.Jump = true
-           						end
-        						end
 						end
 						if vomit:IsDescendantOf(game) then
 						fireproximityprompt(vomit.ProximityPrompt)
