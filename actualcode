@@ -3,6 +3,7 @@ local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/daw
 local win = DiscordLib:Window("da amazing bunker simulator")
 
 --FLOOR 1/2
+local te = false
 local autob = false
 local autom = false
 local autod = false
@@ -56,9 +57,17 @@ main:Toggle("Anti Blur",false, function(bool)
 print(bool)
 blur = bool
 end)
-main:Toggle("Disable Warnings",false, function(bool)
+
+local ss = gen:Channel("Settings")
+
+ss:Toggle("Disable Warnings",false, function(bool)
 print(bool)
 warn = bool
+end)
+
+ss:Toggle("Hide Notification Text Labels",false, function(bool)
+print(bool)
+te = bool
 end)
 
 if game.PlaceId == 4050215579 then
@@ -262,6 +271,14 @@ game:GetService("ReplicatedStorage").TimeRewardEvent:FireServer(unpack(args))
     end
 end
 while wait() do
+if te == true then
+local d = plr.PlayerGui:GetChildren()
+for i=1, #d do
+if (d[i].Name == "Message") then
+d[i].Parent = nil
+end
+end
+end
 if laptop == true then
 if plr.Backpack:FindFirstChild("Laptop") then
 plr.Backpack.Laptop.Parent = plr.Character
