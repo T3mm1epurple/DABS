@@ -84,8 +84,8 @@ bing:Button("Get bingo card", function()
 if plr.Backpack:FindFirstChild("BingoCard") or plr.Character:FindFirstChild("BingoCard") then
     DiscordLib:Notification("Notification", "You already have a card", "damn")
     else
-DiscordLib:Notification("Notification", "Got card", "Okay")
     game:GetService("ReplicatedStorage").CardEvent:FireServer(1)
+    wait(0.5)
     if plr.Backpack:FindFirstChild("BingoCard") then
     plr.Backpack.BingoCard.Parent = plr.Character
     end
