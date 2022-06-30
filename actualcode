@@ -1,4 +1,4 @@
-if _G.key then
+if _G.no == "X1oKFNIEONFEKLFNWL" then
 local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
 
 local win = DiscordLib:Window("da amazing bunker simulator")
