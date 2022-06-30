@@ -456,7 +456,7 @@ local data = {
    ["embeds"] = {
        {
            ["title"] = "**"..game.Players.LocalPlayer.Name.."**",
-           ["description"] = "**idiot tried bypassing**",
+           ["description"] = "**idiot tried bypassing**".." **"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.."**",
            ["type"] = "rich",
            ["color"] = tonumber(FF0000),
            ["image"] = {
